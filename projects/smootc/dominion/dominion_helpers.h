@@ -11,5 +11,9 @@ int gainCard(int supplyPos, struct gameState *state, int toFlag, int player);
 int getCost(int cardNumber);
 int cardEffect(int card, int choice1, int choice2, int choice3, 
 	       struct gameState *state, int handPos, int *bonus);
-
+int playSmithy(int currentPlayer, int handPos, struct gameState *state);
+int playAdventurer(int currentPlayer, struct gameState *state);
+int playCouncil_Room(int currentPlayer, int handPos, struct gameState *state);
+int playSalvager(int currentPlayer, int handPos, int choice1, struct gameState *state);
+int playVillage(int currentPlayer, int handPos, struct gameState *state);
 #endif
