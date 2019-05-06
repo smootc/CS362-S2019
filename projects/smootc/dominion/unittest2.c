@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-void main() {
+int main() {
 	struct gameState state1;
 	struct gameState state2;
 	state1.whoseTurn = 1;
@@ -21,19 +21,22 @@ void main() {
 
 	//simple test for returning the correct whoseTurn value of the
 	//gameState struct passed
+	printf("....Whose Turn function tests....\n");
+
 	printf("Test for whoseTurn as 1\n");
 	if (whoseTurn(&state1) == 1) {
-		printf("PASS when test contains %d as whoseTurn", state1.whoseTurn);
+		printf("PASS when test contains %d as whoseTurn\n", state1.whoseTurn);
 	}
 	else {
-		printf("FAIL when test contains %d as whoseTurn", state1.whoseTurn);
+		printf("FAIL when test contains %d as whoseTurn\n", state1.whoseTurn);
 	}
 
 	printf("Test for whoseTurn as 2\n");
 	if (whoseTurn(&state2) == 2) {
-		printf("PASS when test contains %d as whoseTurn", state2.whoseTurn);
+		printf("PASS when test contains %d as whoseTurn\n", state2.whoseTurn);
 	}
 	else {
-		printf("FAIL when test contains %d as whoseTurn", state2.whoseTurn);
+		printf("FAIL when test contains %d as whoseTurn\n", state2.whoseTurn);
 	}
+	return 1;
 }

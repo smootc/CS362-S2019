@@ -13,50 +13,45 @@
 #include <stdlib.h>
 #include <assert.h>
 
-void main() {
-	struct gameState state1;
-	state1->supplyCount[province] = 0;
-	struct gameState state2;
-	state2->supplyCount[province] = 2;
-	struct gameState state3;
-	state3->supplyCount[province] = 2;
+int main() {
+	int seed = 1000;
+	struct gameState state;
+	struct gameState state_test;
+	int numPlayer = 2;
+	int curPlayer = 0;
+	int k[10] = {adventurer, village, mine, sea_hag, smithy, embargo, minion, cutpurse, tribute, council_room};
+	
+	printf("....Test playVillage....\n");
 
-	int i;
-	for(i=0; i < 25; i++) {
-		state1->supplyCount[i] = 3;
-	}
+	initializeGame(numPlayer, k, seed, &state);
 
-	for(i=0; i < 25; i++) {
-		if(i != 3) {
-			state2->supplyCount[i] = 0;
-		}
-	}
+	memcpy(&state_test, &state, sizeof(struct gameState));
 
-	for(i=0; i < 25; i++) {
-		state3->supplyCount[i] = 3;
-	}
+	playVillage(0, 0, &state);
 
-	printf("Test for game ending when no more province cards\n");
-	if(isGameOver(state1) == 1) {
-		printf("PASS when total province is %d\n", state1->supplyCount[province]);
+	curPlayer = whoseTurn(&state_test);
+
+	printf("Test that the player drew a card\n");
+	if (state.handCount[curPlayer] == state_test.handCount[curPlayer]) {
+		printf("PASS player drew a card\n");
 	}
 	else {
-		printf("FAIL when total province is %d\n", state1->supplyCount[province]);
+		printf("FAIL player did not draw a card\n");
 	}
 
-	printf("Test for game ending when there are 3+ supply piles at 0\n");
-	if(isGameOver(state2) == 1) {
-		printf("PASS when 3 or more supply piles are empty\n");
+	printf("Test that number of of actions increased by 2\n");
+	if (state.numActions == state_test.numActions + 2) {
+		printf("PASS nuber of actions was increased by 2\n");
 	}
 	else {
-		printf("FAIL when 3 or more supply piles are empty\n");
+		printf("FAIL number of actions did not increase by 2\n");
 	}
 
-	printf("Test for game ending when no supply piles are empty and province total greater than 0\n");
-	if(isGameOver(state3) == 0) {
-		printf("PASS when supply piles and province are not empty\n");
+	printf("Test that card was moved to discard pile\n");
+	if (state.discardCount[curPlayer] == state_test.discardCount[curPlayer] + 1) {
+		printf("PASS village card was placed into discard pile\n");
 	}
 	else {
-		printf("FAIL when supply piles and province are not empty\n");
-	}
+		printf("FAIL village card was not placed in discard pile\n");
+	}	
 }

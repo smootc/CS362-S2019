@@ -14,256 +14,36 @@
 #include <assert.h>
 
 void main() {
-	int cardNum;	//decare variable used as card position
-	int costRec;	//will use to hold value returned in call
+	int seed = 1000;
+	struct gameState state;
+	struct gameState state_test;
+	int numPlayer = 2;
+	int curPlayer = 0;
+	int k[10] = {adventurer, village, mine, sea_hag, smithy, embargo, minion, cutpurse, tribute, council_room};
 
-	printf("....Testing for getCost function....\n");
+	printf("....Test playCouncil_Room....\n");
 
-	//loop through all cards to confirm the value returned was correct
-	for(cardNum = 0; cardNum < 27; cardNum++) {
-		costRec = getCost(cardNum);
+	initializeGame(numPlayer, k, seed, &state);
 
-		if(cardNum == 0) {
-			if(costRec == 0) {
-				printf("PASS when return value for curse is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for curse is %d\n", costRec);
-			}
-		}
+	memcpy(&state_test, &state, sizeof(struct gameState));
 
-		if(cardNum == 1) {
-			if(costRec == 2) {
-				printf("PASS when return value for estate is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for estate is %d\n", costRec);
-			}
-		}
+	playCouncil_Room(0, 0, &state);
 
-		if(cardNum == 2) {
-			if (costRec == 5) {
-				printf("PASS when return value for duchy is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for duchy is %d\n", costRec);
-			}
-		}
+	curPlayer = whoseTurn(&state_test);
 
-		if(cardNum == 3) {
-			if(costRec == 8) {
-				printf("PASS when return value for province is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for province is %d\n", costRec);
-			}
-		}
-
-		if(cardNum == 4) {
-			if(costRec == 0) {
-				printf("PASS when return value for copper is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for copper is %d\n", costRec);
-			}
-		}
-
-		if(cardNum == 5) {
-			if(costRec == 3) {
-				printf("PASS when return value for silver is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for silver is %d\n", costRec);
-			}
-		}
-
-		if(cardNum == 6) {
-			if(costRec == 6) {
-				printf("PASS when return value for gold is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for gold is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 7) {
-			if(costRec == 6) {
-				printf("PASS when return value for adventurer is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for adventurer is %d\n", costRec);
-			}
-		}
-
-		if(cardNum == 8) {
-			if(costRec == 5) {
-				printf("PASS when return value for council_room is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for council_room is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 9) {
-			if(costRec == 4) {
-				printf("PASS when return value for feast is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for feast is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 10) {
-			if(costRec == 4) {
-				printf("PASS when return value for gardens is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for gardens is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 11) {
-			if(costRec == 5) {
-				printf("PASS when return value for mine is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for mine is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 12) {
-			if(costRec == 4) {
-				printf("PASS when return value for remodel is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for remodel is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 13) {
-			if(costRec == 4) {
-				printf("PASS when return value for smithy is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for smithy is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 14) {
-			if(costRec == 3) {
-				printf("PASS when return value for village is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for village is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 15) {
-			if(costRec == 4) {
-				printf("PASS when return value for baron is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for baron is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 16) {
-			if(costRec == 3) {
-				printf("PASS when return value for great_hall is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for great_hall is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 17) {
-			if(costRec == 5) {
-				printf("PASS when return value for minion is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for minion is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 18) {
-			if(costRec == 3) {
-				printf("PASS when return value for steward is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for steward is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 19) {
-			if(costRec == 5) {
-				printf("PASS when return value for tribute is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for tribute is %d\n", costRec);
-			}
-		}
-
-		if(cardNum == 20) {
-			if(costRec == 3) {
-				printf("PASS when return value for ambassador is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for ambassador is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 21) {
-			if(costRec == 4) {
-				printf("PASS when return value for cutpurse is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for cutpurse is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 22) {
-			if(costRec == 2) {
-				printf("PASS when return value for embargo is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for embargo is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 23) {
-			if(costRec == 5) {
-				printf("PASS when return value for outpost is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for outpost is %d\n", costRec);
-			}
-		}
-				
-		if(cardNum == 24) {
-			if(costRec == 4) {
-				printf("PASS when return value for salvager is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for salvager is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 25) {
-			if(costRec == 4) {
-				printf("PASS when return value for sea_hag is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for sea_hag is %d\n", costRec);
-			}
-		}
-		
-		if(cardNum == 26) {
-			if(costRec == 4) {
-				printf("PASS when return value for treasure_map is %d\n", costRec);
-			}
-			else {
-				printf("FAIL when return value for treasure_map is %d\n", costRec);
-			}
-		}
+	printf("Test that player has added 4 cards to hand\n");
+	if (state.handCount[curPlayer] == state_test.handCount[curPlayer] + 4) {
+		printf("PASS player drew four cards\n");
 	}
+	else {
+		printf("FAIL player did not draw four cards\n");
+	}
+
+	printf("Test that number of buys were increased\n");
+	if (state.numBuys == state_test.numBuys + 1) {
+		printf("PASS player's buys were increased\n");
+	}
+	else {
+		printf("FAIL player's buys were not increased\n");
+	}	
 }

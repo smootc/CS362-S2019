@@ -13,45 +13,42 @@
 #include <stdlib.h>
 #include <assert.h>
 
-void main(int argc, char** argv) {
-	struct gameState state1;
-	struct gameState state2;
-	struct gameState state3;
+void main() {
+	struct gameState stateA;
+	struct gameState stateB;
+	struct gameState stateC;
 	int supplyPos=2;
-
-	//test buyCard function
 	
-	state1.numBuys = 1;
-	state1.coins = 4;
-	state2.numBuys = 1;
-	state2.coins = 5;
-	state3.numBuys = 0;
-	state3.coins = 12;
+	stateA.numBuys = 4;
+	stateA.coins = 8;
+	stateB.numBuys = 1;
+	stateB.coins = 8;
+	stateC.numBuys = 0;
+	stateC.coins = 7;
+
+	printf("....Buy Card Test....\n");
 
 	printf("Test for insufficient coins\n");
-	if(buyCard(supplyPos, &state1) == -1) {
-		printf("PASS when testing %d coins\n", state1.coins);
+	if(buyCard(supplyPos, &stateA) == -1) {
+		printf("PASS returned that there were insufficient coins\n");
 	}
 	else {
-		printf("FAIL when testing %d coins\n", state1.coins);
+		printf("FAIL returned that there were sufficient coins\n");
 	}
 
 	printf("Test for sufficient coins scenario\n");
-	if(buyCard(supplyPos, &state2) == 0) {
-		printf("PASS when testing %d coins\n", state2.coins);
+	if(buyCard(supplyPos, &stateB) == 0) {
+		printf("PASS returned that there were sufficient coins\n");
 	}
 	else {
-		printf("FAIL when testing %d coins\n", state2.coins);
+		printf("FAIL returned that there were insufficient coins\n");
 	}
 
-	printf("Test for insufficient number of buys available\n", state3.coins);
-	if(buyCard(supplyPos, &state3) == -1) {
-		printf("PASS when testing %d numBuys\n", state3.numBuys);
+	printf("Test for insufficient number of buys available\n");
+	if(buyCard(supplyPos, &stateC) == -1) {
+		printf("PASS returned that there were insufficient coins\n");
 	}
 	else {
-		printf("FAIL when testing %d numBuys\n", state3.numBuys);
+		printf("FAIL returned that there were sufficient coins\n");
 	}
-
-	printf("END OF BUYCARD TEST\n");
-	
 }

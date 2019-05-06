@@ -14,23 +14,16 @@
 #include <assert.h>
 
 void main() {	
-	int i;
-	seed = 1000;
+	int seed = 1000;
 	struct gameState state;
 	struct gameState state_test;
-	int flag = 0;
 	int numPlayer = 2;
 	int curPlayer = 0;
-	int kingdomCards(adventurer, council_room, feast, mine, smithy, baron, gardens, remodel, village, great_hall);
-	int result;
-	int testCount = 0;
-	int stateCount = 0;
-	int cardCheck1, cardCheck2;
-	int choice1=
+	int k[10] = {adventurer, village, mine, sea_hag, smithy, embargo, minion, cutpurse, tribute, council_room};
 
 	printf("....Test for Great Hall Card....\n");
 
-	initializeGame(numPlayer, k, seed, state);
+	initializeGame(numPlayer, k, seed, &state);
 
 	//copy to the test struct
 	memcpy(&state_test, &state, sizeof(struct gameState));
@@ -40,7 +33,7 @@ void main() {
 
 	curPlayer = whoseTurn(&state_test);
 
-	//Confirm the card was played
+	printf("Test that the card was played\n");
 	if (state.playedCardCount == (state_test.playedCardCount + 1)) {
 		printf("PASS Great Hall card was played\n");
 	}
@@ -48,7 +41,7 @@ void main() {
 		printf("FAIL Great Hall card was not played\n");
 	}
 
-	//confirm action points were increased from playing card
+	printf("Test that action points were increased\n");
 	if (state.numActions == (state_test.numActions + 1)) {
 		printf("PASS number of actions has increased\n");
 	}
@@ -56,7 +49,15 @@ void main() {
 		printf("FAIL number of actions has not increased\n");
 	}
 
-	//confirm Great Hall was discarded
+	printf("Test that card was removed from player's hand\n");
+	if (state.handCount[curPlayer] == state_test.handCount[curPlayer] - 1) {
+		printf("PASS number of cards in hand are correct\n");
+	}
+	else {
+		printf("FAIL number of cards in hand are incorrect\n");
+	}
+
+	printf("Test that card was sent to discard pile\n");
 	if (state.discardCount[curPlayer] == (state_test.discardCount[curPlayer] + 1)) {
 		printf("PASS card was sent to the discard pile\n");
 	}
