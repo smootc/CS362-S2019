@@ -1,6 +1,6 @@
 /*************************************************
  * Author: Corey Smoot
- * Date: 5/12/2019
+ * Date: 5/10/2019
  * Description: random tester
 *************************************************/
 
@@ -11,20 +11,20 @@
 
 char inputChar()
 {
-	char randomchars = (rand() % 94) + 32;
-	return randomchars;
+	char chars = (rand() % (126 - 32 + 1)) + 32;
+	return chars;
 }
 
 char *inputString()
 {
-	static char s[6];
+	char strng[6];
 	int x = 0;
 
 	for(x; x < 5; x++) {
-		s[x] = (rand() % 16) + 101;
+		strng[x] = (rand() % (116 - 101 + 1)) + 101;
 	}
 
-	return s;
+	return strng;
 
 }
 
