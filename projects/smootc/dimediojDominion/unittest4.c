@@ -27,7 +27,7 @@ int main() {
 
 	memcpy(&state_test, &state, sizeof(struct gameState));
 
-	playVillage(0, 0, &state);
+	cardEffect(village, 0, 0, 0, &state, 0, 0);
 
 	curPlayer = whoseTurn(&state_test);
 

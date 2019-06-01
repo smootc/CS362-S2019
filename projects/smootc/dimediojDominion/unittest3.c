@@ -21,13 +21,14 @@ void main() {
 	int curPlayer = 0;
 	int k[10] = {adventurer, village, mine, sea_hag, smithy, embargo, minion, cutpurse, tribute, council_room};
 
+	//changed name to council_room - my dominion.c file was refactored to playCouncil_Room
 	printf("....Test playCouncil_Room....\n");
 
 	initializeGame(numPlayer, k, seed, &state);
 
 	memcpy(&state_test, &state, sizeof(struct gameState));
 
-	playCouncil_Room(0, 0, &state);
+	cardEffect(council_room, 0, 0, 0, &state, 0, 0);
 
 	curPlayer = whoseTurn(&state_test);
 
