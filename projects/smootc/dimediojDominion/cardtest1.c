@@ -34,7 +34,7 @@ void main() {
 	curPlayer = whoseTurn(&state_test);
 
 	printf("Test if the card was discarded\n");
-	if(state_test.discardCount[curPlayer] == state.discardCount[curPlayer]) {
+	if(state_test.discardCount[curPlayer] + 1 == state.discardCount[curPlayer]) {
 		printf("PASS adventurer was discarded\n");
 	}
 	else {

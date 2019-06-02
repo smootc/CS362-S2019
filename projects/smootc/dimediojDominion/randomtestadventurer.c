@@ -13,7 +13,7 @@ void main() {
 	int k[10] = {adventurer, village, mine, sea_hag, smithy, embargo, minion, cutpurse, tribute, council_room};
 
 	for(int i = 0; i < 70; i++) {
-		int numPlayers = (rand() % 50);
+		int numPlayers = 2; //(rand() % 50);
 		int seed = (rand() % 5000);
 
 		initializeGame(numPlayers, k, seed, &state);

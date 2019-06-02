@@ -33,12 +33,13 @@ void main() {
 
 	curPlayer = whoseTurn(&state_test);
 	
+	//adding 2 to account for discarded smithy
 	printf("Test for player gaining two cards\n");
 	if(state.playedCardCount == (state_test.playedCardCount + 2)) {
-		printf("PASS player gained two cards\n");
+		printf("PASS card added three cards to hand\n");
 	}
 	else {
-		printf("FAIL player did not gain two cards\n");
+		printf("FAIL card did not add three cards\n");
 	}
 
 	printf("Test for card being sent to discard pile\n");

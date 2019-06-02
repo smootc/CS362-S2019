@@ -32,8 +32,9 @@ void main() {
 
 	curPlayer = whoseTurn(&state_test);
 
+	//plus 3 instead of 4 to account for the discarded card
 	printf("Test that player has added 4 cards to hand\n");
-	if (state.handCount[curPlayer] == state_test.handCount[curPlayer] + 4) {
+	if (state.handCount[curPlayer] == state_test.handCount[curPlayer] + 3) {
 		printf("PASS player drew four cards\n");
 	}
 	else {
