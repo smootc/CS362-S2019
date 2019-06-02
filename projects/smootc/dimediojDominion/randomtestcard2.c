@@ -45,7 +45,7 @@ void main() {
 		}
 
 		//check cards were added and removed
-		if(state.playedCardCount == state_test.playedCardCount+2) {
+		if(state.playedCardCount == state_test.playedCardCount + 1) {
 			printf("PASS card was played\n");
 		}
 		else {
@@ -53,7 +53,7 @@ void main() {
 		}
 
 		//check card was discarded
-		if(state.discardCount[currPlayer] == state_test.discardCount[currPlayer] + 1) {
+		if(state.deckCount[currPlayer] == state_test.deckCount[currPlayer] - 1) {
 			printf("PASS card was discarded\n");
 		}
 		else {
