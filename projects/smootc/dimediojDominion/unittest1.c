@@ -19,10 +19,13 @@ void main() {
 	struct gameState stateC;
 	int supplyPos=2;
 	
+	stateA.supplyCount[2] = 10;
+	stateB.supplyCount[2] = 10;
+	stateC.supplyCount[2] = 10;
 	stateA.numBuys = 4;
-	stateA.coins = 8;
-	stateB.numBuys = 1;
-	stateB.coins = 8;
+	stateA.coins = 0;
+	stateB.numBuys = 2;
+	stateB.coins = 15;
 	stateC.numBuys = 0;
 	stateC.coins = 7;
 
