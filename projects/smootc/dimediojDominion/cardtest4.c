@@ -49,8 +49,9 @@ void main() {
 		printf("FAIL number of actions has not increased\n");
 	}
 
+	//do not add to stat_test count since it will be gaining a card and playing a card
 	printf("Test that card was removed from player's hand\n");
-	if (state.handCount[curPlayer] == state_test.handCount[curPlayer] - 1) {
+	if (state.handCount[curPlayer] == state_test.handCount[curPlayer]) {
 		printf("PASS number of cards in hand are correct\n");
 	}
 	else {
