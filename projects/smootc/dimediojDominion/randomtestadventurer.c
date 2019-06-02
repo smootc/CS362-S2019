@@ -59,19 +59,11 @@ void main() {
 		}
 		
 		//discarded after being played
-		if(state.discardCount[currPlayer] == state_test.discardCount[currPlayer]) {
+		if(state.discardCount[currPlayer] == state_test.discardCount[currPlayer] + 1) {
 			printf("PASS card was discarded\n");
 		}
 		else {
 			printf("FAIL card was not discarded\n");
-		}
-
-		//increase in action points
-		if(state.numActions == state_test.numActions + 2) {
-			printf("PASS action points were added\n");
-		}
-		else {
-			printf("FAIL action points were not added\n");
 		}
 	}
 }
