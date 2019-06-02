@@ -35,7 +35,7 @@ void main() {
 		}
 
 		//check hand count
-		if(state.handCount[currPlayer] == state_test.handCount[currPlayer]-1) {
+		if(state.handCount[currPlayer] == state_test.handCount[currPlayer]+1) {
 			printf("PASS correct hand count\n");
 		}
 		else {
@@ -51,7 +51,7 @@ void main() {
 		}
 
 		//card played
-		if(state.playedCardCount == state_test.playedCardCount + 2) {
+		if(state.playedCardCount == state_test.playedCardCount + 1) {
 			printf("PASS card was played\n");
 		}
 		else {
@@ -63,7 +63,7 @@ void main() {
 			printf("PASS card was discarded\n");
 		}
 		else {
-			printf("FAIL card was not discarded\n");
+			printf("FAIL card was not discarded\n %d    %d\n", state.discardCount[currPlayer], state_test.discardCount[currPlayer]);
 		}
 	}
 }

@@ -39,7 +39,7 @@ void main() {
 		printf("PASS card added three cards to hand\n");
 	}
 	else {
-		printf("FAIL card did not add three cards\n");
+		printf("FAIL card did not add three cards\n %d   %d\n", state.playedCardCount, state_test.playedCardCount);
 	}
 
 	printf("Test for card being sent to discard pile\n");
@@ -51,10 +51,10 @@ void main() {
 	}
 
 	printf("Test for correct hand count of the current player\n");
-	if(state.handCount[curPlayer] == (state_test.handCount[curPlayer] - 1)) {
+	if(state.handCount[curPlayer] == (state_test.handCount[curPlayer] + 2)) {
 		printf("PASS hand count correct\n");
 	}
 	else {
-		printf("FAIL hand count is incorrect\n");
+		printf("FAIL hand count is incorrect\n %d   %d\n", state.handCount[curPlayer], state_test.handCount[curPlayer]);
 	}
 }

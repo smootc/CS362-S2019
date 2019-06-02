@@ -44,11 +44,11 @@ void main() {
 	
 	//confirm number of cards in hand
 	printf("Test for correct number of cards in hand\n");
-	if(state.handCount[curPlayer] == state_test.handCount[curPlayer] - 1) {
+	if(state.handCount[curPlayer] == state_test.handCount[curPlayer] + 2) {
 		printf("PASS correct deck amount after execution\n");
 	}
 	else {
-		printf("FAIL incorrect deck amount after execution\n");
+		printf("FAIL incorrect deck amount after execution\n %d   %d", state.handCount[curPlayer], state_test.handCount[curPlayer]);
 	}
 	
 }
